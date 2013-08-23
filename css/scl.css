@@ -3,7 +3,7 @@ body {
 	padding: 0px;
 	font-size: 16px;
 	font-family: sans-serif;
-	background-color: red;
+	background-color: #ddd;
 	background-image: url('../res/bg.jpg');
 }
 
@@ -23,13 +23,13 @@ h2 {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	padding: 10px;
-	background-color: #FFF;
+	background-color: #fff;
 	background-image: url('../res/bg2.jpg');
 }
 
 #products {
 	margin: 4px;
-	border: 1px solid #D0D0D0;
+	border: 1px solid #d0d0d0;
 	border-radius: 4px;
 	clear: both;
 	padding: 5px;
@@ -47,9 +47,9 @@ label.cb-button input {
 label.cb-button input + span {
 	margin: 4px;
 	padding: 3px 0px;
-	border: 1px solid #D0D0D0;
+	border: 1px solid #d0d0d0;
 	border-radius: 4px;
-	background-color: #EAEAEA;
+	background-color: #eaeaea;
 	text-align: center;
 	display: block;
 	cursor: default;
@@ -67,7 +67,7 @@ textarea {
 	padding: 3px;
 	clear: both;
 	width: 99%;
-	border: 1px solid #D0D0D0;
+	border: 1px solid #d0d0d0;
 	border-radius: 4px;
 	resize: none;
 	height: 50px;
@@ -89,9 +89,9 @@ label.tb-feature input:checked + span {
 .button {
 	margin: 4px;
 	padding: 3px;
-	background-color: #EAEAEA;
+	background-color: #eaeaea;
 	border-radius: 4px;
-	border: 1px solid #D0D0D0;
+	border: 1px solid #d0d0d0;
 	overflow: auto;
 	cursor: default;
 	width: 200px;
@@ -100,11 +100,11 @@ label.tb-feature input:checked + span {
 }
 
 .button:hover {
-	border-color: #d0c2c2;
+	border-color: #b9b9b9;
 }
 
 .button:active {
-	background-color: #DEDEDE;
+	background-color: #dedede;
 }
 
 #log_text {
@@ -112,7 +112,7 @@ label.tb-feature input:checked + span {
 	padding: 3px;
 	clear: both;
 	width: 99%;
-	border: 1px solid #D0D0D0;
+	border: 1px solid #d0d0d0;
 	border-radius: 4px;
 	box-sizing: border-box;
 	overflow: auto;
