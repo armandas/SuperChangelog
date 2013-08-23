@@ -14,9 +14,9 @@
 		<form action="">
 			<h2>Choose products</h2>
 			<div id="products">
-				<label for="prod1" class="cb-button2">
-					PROD 2
-					<input type="checkbox" value="1" id="prod1" class="cb">
+				<label class="cb-button">
+					<input type="checkbox" value="2">
+					<span>PROD 2</span>
 				</label>
 				<label class="cb-button">
 					<input type="checkbox" value="2">
@@ -44,10 +44,9 @@
 			<h2>Log message</h2>
 			<textarea name="change" placeholder="Enter your message here." required></textarea>
 			<label class="cb-button tb-feature" id="is_bug_fix">
-				<input type="checkbox" name="is_bug_fix" value="1" onClick="setType()">
+				<input type="checkbox" name="is_bug_fix" value="1" onClick="message_setTypeText()">
 				<span>Feature</span>
 			</label>
-			<!--span class="t-button tb-feature" id="change_type"">Feature</span-->
 			<input type="submit" name="ok" value="Add" class="button">
 		</form>
 		<span class="clear"></span>

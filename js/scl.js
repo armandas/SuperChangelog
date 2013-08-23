@@ -1,11 +1,7 @@
-function setType()
+function message_setTypeText()
 {
-	/*$('#is_bug_fix').toggleClass('tb-bug');
-
-	if ($('#is_bug_fix').hasClass('tb-bug')) {
+	if ($('#is_bug_fix input').is(':checked'))
 		$('#is_bug_fix span').text('Bug fix');
-	}
-	else {
+	else
 		$('#is_bug_fix span').text('Feature');
-	}*/
 }

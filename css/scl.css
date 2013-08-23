@@ -40,25 +40,21 @@ span.clear {
 	display: block;
 }
 
-label.cb-button {
-	overflow: auto;
-	float: left;
+label.cb-button input {
+	display: none;
 }
 
-label.cb-button span {
+label.cb-button input + span {
 	margin: 4px;
+	padding: 3px 0px;
 	border: 1px solid #D0D0D0;
 	border-radius: 4px;
 	background-color: #EAEAEA;
 	text-align: center;
-	padding: 3px 0px;
 	display: block;
 	cursor: default;
 	width: 100px;
-}
-
-label.cb-button input {
-	display: none;
+	float: left;
 }
 
 label.cb-button input:checked + span {
@@ -79,6 +75,17 @@ textarea {
 	display: block;
 }
 
+label.tb-feature input + span {
+	border-color: #679d67;
+	background-color: #abeda2;
+}
+
+label.tb-feature input:checked + span {
+	color: black;
+	border-color: #9d6767;
+	background-color: #edaba2;
+}
+
 .button, .t-button {
 	margin: 4px;
 	padding: 3px;
@@ -90,17 +97,6 @@ textarea {
 	width: 200px;
 	font-size: inherit;
 	float: right;
-}
-
-label.tb-feature {
-	border-color: #679d67;
-	background-color: #abeda2;
-}
-
-label.tb-feature input:checked + span {
-	color: black;
-	border-color: #9d6767;
-	background-color: #edaba2;
 }
 
 .button:hover {
