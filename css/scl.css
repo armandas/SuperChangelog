@@ -86,7 +86,7 @@ label.tb-feature input:checked + span {
 	background-color: #edaba2;
 }
 
-.button, .t-button {
+.button {
 	margin: 4px;
 	padding: 3px;
 	background-color: #EAEAEA;
