@@ -1,3 +1,18 @@
+var scl_default_page = 'add_log_message';
+
+$(
+	function()
+	{
+		$('.container').not('#' + scl_default_page).hide();
+	}
+);
+
+function showContainer(id)
+{
+	$('.container').not('#' + id).hide();
+	$('#' + id).show();
+}
+
 function message_setTypeText()
 {
 	if ($('#is_bug_fix input').is(':checked'))

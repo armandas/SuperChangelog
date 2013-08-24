@@ -6,11 +6,18 @@
 	<title>Super ChangeLog</title>
 	<link href="css/scl.css" media="screen" rel="stylesheet" type="text/css">
 	<script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
 	<script src="js/scl.js" type="text/javascript"></script>
 </head>
 
 <body>
-	<div class="container">
+
+<input type="submit" onclick="showContainer('add_log_message')" value="Add">
+<input type="submit" onclick="showContainer('export_changelog')" value="Export">
+<input type="submit" onclick="showContainer('add_release')" value="Release">
+<span class="clear"></span>
+
+	<div class="container" id="add_log_message">
 		<form>
 			<h2>Choose products</h2>
 			<div id="products">
@@ -52,7 +59,7 @@
 		<span class="clear"></span>
 	</div>
 
-	<div class="container">
+	<div class="container" id="export_changelog">
 		<h2>Choose a product</h2>
 		<div id="products">
 			<label class="cb-button">
@@ -110,7 +117,7 @@ PROD 6 CHANGELOG
 		<span class="clear"></span>
 	</div>
 
-	<div class="container">
+	<div class="container" id="add_release">
 		<h2>Choose a product</h2>
 		<div id="products">
 			<label class="cb-button">
