@@ -62,6 +62,7 @@ label.cb-button input:checked + span {
 	color: #fff;
 }
 
+input[type=text],
 textarea {
 	margin: 4px;
 	padding: 3px;
@@ -69,10 +70,13 @@ textarea {
 	width: 99%;
 	border: 1px solid #d0d0d0;
 	border-radius: 4px;
-	resize: none;
-	height: 50px;
 	box-sizing: border-box;
 	display: block;
+}
+
+textarea {
+	resize: none;
+	height: 50px;
 }
 
 label.tb-feature input + span {
