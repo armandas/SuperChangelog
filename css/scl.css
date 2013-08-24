@@ -3,8 +3,25 @@ body {
 	padding: 0px;
 	font-size: 16px;
 	font-family: sans-serif;
-	background-color: #ddd;
+	background-color: #dfdfdf;
 	background-image: url('../res/bg.jpg');
+}
+
+#menu a {
+	display: inline;
+	font-size: 1.4em;
+	font-weight: bold;
+	text-decoration: none;
+	margin-right: 30px;
+	margin-bottom: 0px;
+	padding: 5px;
+	color: #777;
+	outline: none;
+}
+
+#menu a:target,
+#menu a:hover {
+	color: #000;
 }
 
 h2 {
@@ -57,6 +74,12 @@ span.clear {
 	display: block;
 }
 
+#menu {
+	width: 800px;
+	margin: auto;
+	padding: 10px;
+}
+
 .container {
 	border: 1px solid #bbb;
 	border-radius: 10px;
@@ -64,12 +87,9 @@ span.clear {
 	position: absolute;
 	left: 0px;
 	right: 0px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin: auto;
 	padding: 10px;
-	background-color: #fff;
+	background-color: #f7f7f7;
 	background-image: url('../res/bg2.jpg');
 }
 

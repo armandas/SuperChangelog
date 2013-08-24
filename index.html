@@ -11,13 +11,14 @@
 </head>
 
 <body>
+	<div id="menu">
+		<a href="#log" id="log">Add a change</a>
+		<a href="#download" id="download">Download a changelog</a>
+		<a href="#release" id="release">Add a release</a>
+	</div>
 
-<input type="submit" onclick="showContainer('add_log_message')" value="Add">
-<input type="submit" onclick="showContainer('export_changelog')" value="Export">
-<input type="submit" onclick="showContainer('add_release')" value="Release">
-<span class="clear"></span>
 
-	<div class="container" id="add_log_message">
+	<div class="container" id="log-cont">
 		<form>
 			<h2>Choose products</h2>
 			<div id="products">
@@ -51,7 +52,7 @@
 			<h2>Log message</h2>
 			<textarea name="change" placeholder="Enter your message here." required></textarea>
 			<label class="cb-button tb-feature" id="is_bug_fix">
-				<input type="checkbox" name="is_bug_fix" value="1" onClick="message_setTypeText()">
+				<input type="checkbox" name="is_bug_fix" value="1">
 				<span>Feature</span>
 			</label>
 			<input type="submit" name="ok" value="Add" class="button">
@@ -59,7 +60,7 @@
 		<span class="clear"></span>
 	</div>
 
-	<div class="container" id="export_changelog">
+	<div class="container" id="download-cont">
 		<h2>Choose a product</h2>
 		<div id="products">
 			<label class="cb-button">
@@ -117,7 +118,7 @@ PROD 6 CHANGELOG
 		<span class="clear"></span>
 	</div>
 
-	<div class="container" id="add_release">
+	<div class="container" id="release-cont">
 		<h2>Choose a product</h2>
 		<div id="products">
 			<label class="cb-button">
@@ -153,6 +154,7 @@ PROD 6 CHANGELOG
 		<span class="clear"></span>
 	</div>
 
+	<script src="js/scl_handlers.js" type="text/javascript"></script>
 </body>
 </html>
       

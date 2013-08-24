@@ -1,22 +1,18 @@
-var scl_default_page = 'add_log_message';
+var scl_default_page = '#log';
+
+function displayPage(id)
+{
+	target = id || window.location.hash || scl_default_page;
+	window.location.hash = target;
+
+	$('.container').not(target + '-cont').hide();
+	$(target + '-cont').show();
+}
 
 $(
 	function()
 	{
-		$('.container').not('#' + scl_default_page).hide();
+		displayPage();
 	}
 );
 
-function showContainer(id)
-{
-	$('.container').not('#' + id).hide();
-	$('#' + id).show();
-}
-
-function message_setTypeText()
-{
-	if ($('#is_bug_fix input').is(':checked'))
-		$('#is_bug_fix span').text('Bug Fix');
-	else
-		$('#is_bug_fix span').text('Feature');
-}
