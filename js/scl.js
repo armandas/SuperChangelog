@@ -9,10 +9,8 @@ function displayPage(id)
 	$(target + '-cont').show();
 }
 
-$(document).ready(
-	function()
-	{
-		displayPage();
-	}
-);
+$(document).ready(function()
+{
+	displayPage();
+});
 

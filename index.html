@@ -16,33 +16,32 @@
 		<a href="#release" id="release">Add a release</a>
 	</div>
 
-
 	<div class="container" id="log-cont">
-		<form>
+		<form method="POST" id="log-form">
 			<h2>Choose products</h2>
-			<div id="products">
+			<div class="products">
 				<label class="cb-button">
-					<input type="checkbox" value="2">
+					<input type="checkbox" name="log-prod" value="prod1">
 					<span>PROD 2</span>
 				</label>
 				<label class="cb-button">
-					<input type="checkbox" value="2">
+					<input type="checkbox" name="log-prod" value="prod1">
 					<span>PROD 1</span>
 				</label>
 				<label class="cb-button">
-					<input type="checkbox" value="2">
+					<input type="checkbox" name="log-prod" value="prod3">
 					<span>PROD 3</span>
 				</label>
 				<label class="cb-button">
-					<input type="checkbox" value="2">
+					<input type="checkbox" name="log-prod" value="prod4">
 					<span>PROD 4</span>
 				</label>
 				<label class="cb-button">
-					<input type="checkbox" value="3">
+					<input type="checkbox" name="log-prod" value="prod6">
 					<span>PROD 6</span>
 				</label>
 				<label class="cb-button">
-					<input type="checkbox" value="4">
+					<input type="checkbox" name="log-prod" value="prod5">
 					<span>PROD 5</span>
 				</label>
 				<span class="clear"></span>
@@ -54,102 +53,84 @@
 				<input type="checkbox" name="is_bug_fix" value="1">
 				<span>Feature</span>
 			</label>
-			<input type="submit" name="ok" value="Add" class="button">
+			<input type="submit" value="Add" class="button">
 		</form>
 		<span class="clear"></span>
 	</div>
 
 	<div class="container" id="download-cont">
 		<h2>Choose a product</h2>
-		<div id="products">
-			<label class="cb-button">
-				<input type="radio" name="product" value="1">
-				<span>PROD 2</span>
-			</label>
-			<label class="cb-button">
-				<input type="radio" name="product" value="2">
-				<span>PROD 1</span>
-			</label>
-			<label class="cb-button">
-				<input type="radio" name="product" value="2">
-				<span>PROD 3</span>
-			</label>
-			<label class="cb-button">
-				<input type="radio" name="product" value="2">
-				<span>PROD 4</span>
-			</label>
-			<label class="cb-button">
-				<input type="radio" name="product" value="3">
-				<span>PROD 6</span>
-			</label>
-			<label class="cb-button">
-				<input type="radio" name="product" value="4">
-				<span>PROD 5</span>
-			</label>
-			<span class="clear"></span>
-		</div>
+		<form method="POST">
+			<div class="products">
+				<label class="cb-button view-btn" data-product="prod1">
+					<input type="radio" name="download-prod" value="prod1" required>
+					<span>PROD 2</span>
+				</label>
+				<label class="cb-button view-btn" data-product="prod1">
+					<input type="radio" name="download-prod" value="prod1" required>
+					<span>PROD 1</span>
+				</label>
+				<label class="cb-button view-btn" data-product="prod3">
+					<input type="radio" name="download-prod" value="prod3" required>
+					<span>PROD 3</span>
+				</label>
+				<label class="cb-button view-btn" data-product="prod4">
+					<input type="radio" name="download-prod" value="prod4" required>
+					<span>PROD 4</span>
+				</label>
+				<label class="cb-button view-btn" data-product="prod6">
+					<input type="radio" name="download-prod" value="prod6" required>
+					<span>PROD 6</span>
+				</label>
+				<label class="cb-button view-btn" data-product="prod5">
+					<input type="radio" name="download-prod" value="prod5" required>
+					<span>PROD 5</span>
+				</label>
+				<span class="clear"></span>
+			</div>
 
-		<h2>Change log</h2>
-		<pre id="log_text">
-PROD 6 CHANGELOG
-===============
-
-2013-08-20 Release 1.4.1
-
-	* Added new WebRemote interface. Currently supported by the following internet browsers: Firefox, Google Chrome.
-	* Improved the usability of text entry on the front panel.
-	* Improved screen lock feature. If enabled, the screen will go to screenasver straight away after boot.
-	* Adding an on-screen message to indicate when the unit is under a remote control.
-	* Changed power step size to implement 100 steps.
-	
-2013-07-13 Release 1.2
-
-	* Ethernet LEDs have been enabled.
-	* Updated web remote. Now only password is required to login.
-	* More accurate Peak Deviation reading.
-	* Improved encoder acceleration performance.
-	* Fixed swapped Mono L/Mono R audio modes.
-	* Fixing web remote reliability.
-
-2013-05-31 Release 1.1
-		</pre>
-		<input type="submit" name="ok" value="Download" class="button">
+			<h2>Change log</h2>
+			<pre id="log-text">Please select a product.</pre>
+			<input type="submit" value="Download" class="button">
+		</form>
 		<span class="clear"></span>
 	</div>
 
 	<div class="container" id="release-cont">
 		<h2>Choose a product</h2>
-		<div id="products">
-			<label class="cb-button">
-				<input type="radio" name="product" value="1">
-				<span>PROD 2</span>
-			</label>
-			<label class="cb-button">
-				<input type="radio" name="product" value="2">
-				<span>PROD 1</span>
-			</label>
-			<label class="cb-button">
-				<input type="radio" name="product" value="2">
-				<span>PROD 3</span>
-			</label>
-			<label class="cb-button">
-				<input type="radio" name="product" value="2">
-				<span>PROD 4</span>
-			</label>
-			<label class="cb-button">
-				<input type="radio" name="product" value="3">
-				<span>PROD 6</span>
-			</label>
-			<label class="cb-button">
-				<input type="radio" name="product" value="4">
-				<span>PROD 5</span>
-			</label>
-			<span class="clear"></span>
-		</div>
+		<form method="POST">
+			<div class="products">
+				<label class="cb-button release-btn" data-product="prod1">
+					<input type="radio" name="release-prod" value="prod1" required>
+					<span>PROD 2</span>
+				</label>
+				<label class="cb-button release-btn" data-product="prod1">
+					<input type="radio" name="release-prod" value="prod1" required>
+					<span>PROD 1</span>
+				</label>
+				<label class="cb-button release-btn" data-product="prod3">
+					<input type="radio" name="release-prod" value="prod3" required>
+					<span>PROD 3</span>
+				</label>
+				<label class="cb-button release-btn" data-product="prod4">
+					<input type="radio" name="release-prod" value="prod4" required>
+					<span>PROD 4</span>
+				</label>
+				<label class="cb-button release-btn" data-product="prod6">
+					<input type="radio" name="release-prod" value="prod6" required>
+					<span>PROD 6</span>
+				</label>
+				<label class="cb-button release-btn" data-product="prod5">
+					<input type="radio" name="release-prod" value="prod5" required>
+					<span>PROD 5</span>
+				</label>
+				<span class="clear"></span>
+			</div>
 
-		<h2>Add a release</h2>
-		<input type="text" name="change" placeholder="Enter a new version number. Current release is 1.4.2" required>
-		<input type="submit" name="ok" value="Add" class="button">
+			<h2>Add a release</h2>
+			<input type="text" name="change" id="release-text" placeholder="Please select a product." required>
+			<input type="submit" value="Add" class="button">
+		</form>
 		<span class="clear"></span>
 	</div>
 

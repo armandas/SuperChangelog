@@ -7,23 +7,6 @@ body {
 	background-image: url('../res/bg.jpg');
 }
 
-#menu a {
-	display: inline;
-	font-size: 1.4em;
-	font-weight: bold;
-	text-decoration: none;
-	margin-right: 30px;
-	margin-bottom: 0px;
-	padding: 5px;
-	color: #777;
-	outline: none;
-}
-
-#menu a:target,
-#menu a:hover {
-	color: #000;
-}
-
 h2 {
 	margin: 16px 4px 4px 4px;
 	padding: 3px 0px;
@@ -41,6 +24,7 @@ textarea {
 	border-radius: 4px;
 	box-sizing: border-box;
 	display: block;
+	outline: none;
 }
 
 textarea {
@@ -74,6 +58,23 @@ span.clear {
 	display: block;
 }
 
+#menu a {
+	display: inline;
+	font-size: 1.4em;
+	font-weight: bold;
+	text-decoration: none;
+	margin-right: 30px;
+	margin-bottom: 0px;
+	padding: 5px;
+	color: #777;
+	outline: none;
+}
+
+#menu a:target,
+#menu a:hover {
+	color: #000;
+}
+
 #menu {
 	width: 800px;
 	margin: auto;
@@ -93,7 +94,7 @@ span.clear {
 	background-image: url('../res/bg2.jpg');
 }
 
-#products {
+.products {
 	margin: 4px;
 	border: 1px solid #d0d0d0;
 	border-radius: 4px;
@@ -123,7 +124,7 @@ label.cb-button input:checked + span {
 	color: #fff;
 }
 
-#log_text {
+#log-text {
 	margin: 4px;
 	padding: 3px;
 	clear: both;
