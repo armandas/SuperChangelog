@@ -20,7 +20,7 @@ $('#log-form').submit(function()
 $('.view-btn').click(function()
 {
 	$('#log-text').text('Loading ' + $(this).attr('data-product') + ' changelog.');
-	//$('#log-text').load('scl.php?viewLog=' + $(this).attr('data-product'));
+	$('#log-text').load('log.txt');// + $(this).attr('data-product'));
 });
 
 $('.release-btn').click(function()
@@ -30,3 +30,4 @@ $('.release-btn').click(function()
 	$('#release-text').attr('placeholder', phText);
 	//$(this).attr('data-product')
 });
+

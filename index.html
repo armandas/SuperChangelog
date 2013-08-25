@@ -16,36 +16,10 @@
 		<a href="#release" id="release">Add a release</a>
 	</div>
 
-	<div class="container" id="log-cont">
+	<div class="page" id="log-page">
+		<h2>Choose products</h2>
 		<form method="POST" id="log-form">
-			<h2>Choose products</h2>
-			<div class="products">
-				<label class="cb-button">
-					<input type="checkbox" name="log-prod" value="prod1">
-					<span>PROD 2</span>
-				</label>
-				<label class="cb-button">
-					<input type="checkbox" name="log-prod" value="prod1">
-					<span>PROD 1</span>
-				</label>
-				<label class="cb-button">
-					<input type="checkbox" name="log-prod" value="prod3">
-					<span>PROD 3</span>
-				</label>
-				<label class="cb-button">
-					<input type="checkbox" name="log-prod" value="prod4">
-					<span>PROD 4</span>
-				</label>
-				<label class="cb-button">
-					<input type="checkbox" name="log-prod" value="prod6">
-					<span>PROD 6</span>
-				</label>
-				<label class="cb-button">
-					<input type="checkbox" name="log-prod" value="prod5">
-					<span>PROD 5</span>
-				</label>
-				<span class="clear"></span>
-			</div>
+			<div class="products" data-choice="multiple" data-page="log"></div>
 
 			<h2>Log message</h2>
 			<textarea name="change" placeholder="Enter your message here." required></textarea>
@@ -58,36 +32,10 @@
 		<span class="clear"></span>
 	</div>
 
-	<div class="container" id="download-cont">
+	<div class="page" id="download-page">
 		<h2>Choose a product</h2>
 		<form method="POST">
-			<div class="products">
-				<label class="cb-button view-btn" data-product="prod1">
-					<input type="radio" name="download-prod" value="prod1" required>
-					<span>PROD 2</span>
-				</label>
-				<label class="cb-button view-btn" data-product="prod1">
-					<input type="radio" name="download-prod" value="prod1" required>
-					<span>PROD 1</span>
-				</label>
-				<label class="cb-button view-btn" data-product="prod3">
-					<input type="radio" name="download-prod" value="prod3" required>
-					<span>PROD 3</span>
-				</label>
-				<label class="cb-button view-btn" data-product="prod4">
-					<input type="radio" name="download-prod" value="prod4" required>
-					<span>PROD 4</span>
-				</label>
-				<label class="cb-button view-btn" data-product="prod6">
-					<input type="radio" name="download-prod" value="prod6" required>
-					<span>PROD 6</span>
-				</label>
-				<label class="cb-button view-btn" data-product="prod5">
-					<input type="radio" name="download-prod" value="prod5" required>
-					<span>PROD 5</span>
-				</label>
-				<span class="clear"></span>
-			</div>
+			<div class="products" data-choice="single" data-page="download"></div>
 
 			<h2>Change log</h2>
 			<pre id="log-text">Please select a product.</pre>
@@ -96,36 +44,10 @@
 		<span class="clear"></span>
 	</div>
 
-	<div class="container" id="release-cont">
+	<div class="page" id="release-page">
 		<h2>Choose a product</h2>
 		<form method="POST">
-			<div class="products">
-				<label class="cb-button release-btn" data-product="prod1">
-					<input type="radio" name="release-prod" value="prod1" required>
-					<span>PROD 2</span>
-				</label>
-				<label class="cb-button release-btn" data-product="prod1">
-					<input type="radio" name="release-prod" value="prod1" required>
-					<span>PROD 1</span>
-				</label>
-				<label class="cb-button release-btn" data-product="prod3">
-					<input type="radio" name="release-prod" value="prod3" required>
-					<span>PROD 3</span>
-				</label>
-				<label class="cb-button release-btn" data-product="prod4">
-					<input type="radio" name="release-prod" value="prod4" required>
-					<span>PROD 4</span>
-				</label>
-				<label class="cb-button release-btn" data-product="prod6">
-					<input type="radio" name="release-prod" value="prod6" required>
-					<span>PROD 6</span>
-				</label>
-				<label class="cb-button release-btn" data-product="prod5">
-					<input type="radio" name="release-prod" value="prod5" required>
-					<span>PROD 5</span>
-				</label>
-				<span class="clear"></span>
-			</div>
+			<div class="products" data-choice="single" data-page="release"></div>
 
 			<h2>Add a release</h2>
 			<input type="text" name="change" id="release-text" placeholder="Please select a product." required>
