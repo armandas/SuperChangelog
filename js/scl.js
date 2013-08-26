@@ -1,4 +1,5 @@
 var SCL_GET_PRODUCTS_URL = 'products.json';//'scl.php?getProducts';
+var SCL_GET_CHANGELOG_URL = 'log.txt';//'scl.php;
 
 var scl_default_page = '#log';
 var scl_products;
@@ -12,30 +13,27 @@ function displayPage(id)
 	$(target + '-page').show();
 }
 
-var createProductMenu = function(products)
+function createProductMenu()
 {
-	return function()
-	{
-		for (var i in products) {
-			var label_class = 'cb-button ' + $(this).attr('data-page') + '-btn';
-			var input_type = $(this).attr('data-choice') == 'multiple' ? 'checkbox' : 'radio'
+	for (var i in scl_products) {
+		var input_type = $(this).attr('data-choice') == 'multiple' ? 'checkbox' : 'radio'
 
-			e1 = $('<label></label>', {'class': label_class, 'data-product': products[i].value});
-			e2 = $('<input>', {'type': input_type, 'name': $(this).attr('data-page'), 'value': products[i].value, 'required': ''});
-			e3 = $('<span></span>', {'text': products[i].name});
+		var label = $('<label></label>', {'class': 'cb-button'});
+		var input = $('<input>', {'type': input_type, 'name': $(this).attr('data-page'), 'value': scl_products[i].value, 'required': ''});
+		var span = $('<span></span>', {'text': scl_products[i].name});
 
-			e1.append(e2, e3);
-			$(this).append(e1);
-		}
-
-		e4 = $('<span></span>', {'class': 'clear'});
-		$(this).append(e4);
+		label.append(input, span);
+		$(this).append(label);
 	}
+
+	var span_clear = $('<span></span>', {'class': 'clear'});
+	$(this).append(span_clear);
 }
 
 function processProductList(data)
 {
-	$('.products').each(createProductMenu(data));
+	scl_products = data;
+	$('.products').each(createProductMenu);
 }
 
 $(document).ready(function()

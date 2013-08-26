@@ -1,33 +1,36 @@
-$('#menu a').click(function()
+$('#menu a').on('click', function()
 {
 	displayPage(this.hash);
 });
 
-$('#is_bug_fix').click(function()
+$('input[name=is_bug_fix]').on('change', function()
 {
-	if ($(this).find('input').is(':checked'))
-		$(this).find('span').text('Bug Fix');
+	if ($(this).is(':checked'))
+		$(this).siblings('span').text('Bug Fix');
 	else
-		$(this).find('span').text('Feature');
+		$(this).siblings('span').text('Feature');
 });
 
-$('#log-form').submit(function()
+$('#log-form').on('submit', function()
 {
 	if (!$(this).find('input[name=log-prod]:checked'))
 		return false;
 });
 
-$('.view-btn').click(function()
+$('.products').on('change', 'input[name=download]', function()
 {
-	$('#log-text').text('Loading ' + $(this).attr('data-product') + ' changelog.');
-	$('#log-text').load('log.txt');// + $(this).attr('data-product'));
+	$('#log-text').load(SCL_GET_CHANGELOG_URL + '?view=' + $(this).val());
 });
 
-$('.release-btn').click(function()
+$('.products').on('change', 'input[name=release]', function()
 {
-	var phText = 'Enter a new version number. Current release is ';
+	var phText = 'Enter a new version number.';
+
+	for (var i in scl_products) {
+		if (scl_products[i].value == $(this).val())
+			phText += ' Current release is ' + scl_products[i].release;
+	}
 
 	$('#release-text').attr('placeholder', phText);
-	//$(this).attr('data-product')
 });
 
