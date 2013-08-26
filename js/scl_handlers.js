@@ -11,10 +11,17 @@ $('input[name=is_bug_fix]').on('change', function()
 		$(this).siblings('span').text('Feature');
 });
 
-$('#log-form').on('submit', function()
+$('form').on('submit', function()
 {
-	if (!$(this).find('input[name=log-prod]:checked'))
+	if ($(this).find('input:checked').length == 0) {
+		$(this).find('.products').addClass('error');
 		return false;
+	}
+});
+
+$('.products').on('change', 'input', function()
+{
+	$(this).parents('.products').removeClass('error');
 });
 
 $('.products').on('change', 'input[name=download]', function()

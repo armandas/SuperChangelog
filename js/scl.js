@@ -19,7 +19,11 @@ function createProductMenu()
 		var input_type = $(this).attr('data-choice') == 'multiple' ? 'checkbox' : 'radio'
 
 		var label = $('<label></label>', {'class': 'cb-button'});
-		var input = $('<input>', {'type': input_type, 'name': $(this).attr('data-page'), 'value': scl_products[i].value, 'required': ''});
+		var input = $('<input>', {
+			'type': input_type,
+			'name': $(this).attr('data-page'),
+			'value': scl_products[i].value
+		});
 		var span = $('<span></span>', {'text': scl_products[i].name});
 
 		label.append(input, span);
