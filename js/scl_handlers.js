@@ -34,7 +34,7 @@ $('.products').on('change', 'input[name=release]', function()
 	var phText = 'Enter a new version number.';
 
 	for (var i in scl_products) {
-		if (scl_products[i].value == $(this).val())
+		if (scl_products[i].id == $(this).val())
 			phText += ' Current release is ' + scl_products[i].release;
 	}
 

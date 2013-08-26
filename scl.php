@@ -10,9 +10,9 @@ if ($mysql->connect_errno) {
 }
 
 $product_list_query = "SELECT p.name, p.id, r.version
-					   FROM releases AS r
+					   FROM products AS p
+					   		LEFT JOIN releases as r ON p.id = r.product_id
 					   		LEFT JOIN releases AS r2 ON (r.product_id = r2.product_id AND r2.date > r.date)
-					   		INNER JOIN products as p ON r.product_id = p.id
 					   WHERE r2.date IS NULL";
 
 if (isset($_GET['product_list'])) {

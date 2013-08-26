@@ -22,7 +22,7 @@ function createProductMenu()
 		var input = $('<input>', {
 			'type': input_type,
 			'name': $(this).attr('data-page'),
-			'value': scl_products[i].value
+			'value': scl_products[i].id
 		});
 		var span = $('<span></span>', {'text': scl_products[i].name});
 
