@@ -1,4 +1,4 @@
-var SCL_GET_PRODUCTS_URL = 'products.json';//'scl.php?getProducts';
+var SCL_GET_PRODUCTS_URL = 'scl.php?product_list';
 var SCL_GET_CHANGELOG_URL = 'log.txt';//'scl.php;
 
 var scl_default_page = '#log';
