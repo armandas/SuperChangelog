@@ -16,12 +16,19 @@ function displayPage(id)
 function createProductMenu()
 {
 	for (var i in scl_products) {
-		var input_type = $(this).attr('data-choice') == 'multiple' ? 'checkbox' : 'radio'
+		if ($(this).attr('data-choice') == 'multiple') {
+			var input_type = 'checkbox';
+			var input_name = $(this).attr('data-page') + '[]';
+		}
+		else {
+			var input_type = 'radio';
+			var input_name = $(this).attr('data-page');
+		}
 
 		var label = $('<label></label>', {'class': 'cb-button'});
 		var input = $('<input>', {
 			'type': input_type,
-			'name': $(this).attr('data-page'),
+			'name': input_name,
 			'value': scl_products[i].id
 		});
 		var span = $('<span></span>', {'text': scl_products[i].name});
