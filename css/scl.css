@@ -25,6 +25,8 @@ textarea {
 	box-sizing: border-box;
 	display: block;
 	outline: none;
+	font-family: "Lucida Console", monospace;
+	font-size: 0.9em;
 }
 
 textarea {
@@ -134,4 +136,6 @@ label.cb-button input:checked + span {
 	box-sizing: border-box;
 	overflow: auto;
 	background-color: #fff;
+	font-family: "Lucida Console", monospace;
+	font-size: 0.9em;
 }
