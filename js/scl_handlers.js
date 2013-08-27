@@ -41,3 +41,8 @@ $('.products').on('change', 'input[name=release]', function()
 	$('#release-text').attr('placeholder', phText);
 });
 
+$('#footer').on('dblclick', function()
+{
+	displayPage('#admin');
+	document.getSelection().removeAllRanges();
+});

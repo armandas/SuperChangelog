@@ -144,3 +144,31 @@ label.cb-button input:checked + span {
 	border-color: red;
 	box-shadow: 0 0 3px red;
 }
+
+#footer {
+	color: rgba(0, 0, 0, 0.3);
+	position: absolute;
+	right: 20px;
+	bottom: 15px;
+	text-align: right;
+	font-size: 0.9em;
+	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
+	text-decoration: none;
+	z-index: -1;
+	cursor: default;
+}
+
+#footer a {
+	color: rgba(0, 0, 0, 0.3);
+	text-decoration: none;
+}
+
+#footer a:hover {
+	color: rgba(0, 106, 197, 0.3);
+}
+
+::selection {
+	background-color: #5af;
+	color: #fff;
+	text-shadow: none;
+};

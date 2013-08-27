@@ -56,8 +56,24 @@
 		<span class="clear"></span>
 	</div>
 
+	<div class="page" id="admin-page">
+		<h2>Choose products to be deactivated</h2>
+		<form method="POST" action="scl.php">
+			<div class="products" data-choice="multiple" data-page="admin"></div>
+			<input type="submit" name="ok" value="Deactivate" class="button">
+			<span class="clear"></span>
+
+			<h2>Add a new product</h2>
+			<input type="text" name="new_product" placeholder="Name of the prooduct.">
+			<input type="submit" name="ok" value="Add" class="button">
+		</form>
+		<span class="clear"></span>
+	</div>
+
+	<div id="footer">Powered by <a href="#log">SuperChangelog</a></div>
+
 	<script src="js/scl_handlers.js" type="text/javascript"></script>
 </body>
 </html>
-      
-      
+
+
