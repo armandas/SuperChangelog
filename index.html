@@ -57,15 +57,17 @@
 	</div>
 
 	<div class="page" id="admin-page">
-		<h2>Choose products to be deactivated</h2>
+		<h2>Deactivate products</h2>
 		<form method="POST" action="scl.php">
 			<div class="products" data-choice="multiple" data-page="admin"></div>
-			<input type="submit" name="ok" value="Deactivate" class="button">
+			<input type="submit" value="Submit" class="button">
 			<span class="clear"></span>
+		</form>
 
-			<h2>Add a new product</h2>
-			<input type="text" name="new_product" placeholder="Name of the prooduct.">
-			<input type="submit" name="ok" value="Add" class="button">
+		<h2>Add a new product</h2>
+		<form method="POST" action="scl.php">
+			<input type="text" name="new_product" placeholder="Name of the prooduct." required>
+			<input type="submit" value="Add" class="button">
 		</form>
 		<span class="clear"></span>
 	</div>

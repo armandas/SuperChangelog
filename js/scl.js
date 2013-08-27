@@ -16,6 +16,11 @@ function displayPage(id)
 function createProductMenu()
 {
 	for (var i in scl_products) {
+		if (scl_products[i].active == '0') {
+			if ($(this).attr('data-page') != 'admin')
+				continue;
+		}
+
 		if ($(this).attr('data-choice') == 'multiple') {
 			var input_type = 'checkbox';
 			var input_name = $(this).attr('data-page') + '[]';
@@ -29,7 +34,8 @@ function createProductMenu()
 		var input = $('<input>', {
 			'type': input_type,
 			'name': input_name,
-			'value': scl_products[i].id
+			'value': scl_products[i].id,
+			'checked': (scl_products[i].active == '0')
 		});
 		var span = $('<span></span>', {'text': scl_products[i].name});
 
