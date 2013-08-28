@@ -172,7 +172,8 @@ label.cb-button input:checked + span {
 }
 
 #footer a:hover {
-	color: rgba(0, 106, 197, 0.3);
+	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8),
+		     0px 0px 3px rgba(205, 240, 255, 0.9);
 }
 
 ::selection {
