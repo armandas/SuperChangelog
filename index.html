@@ -6,6 +6,7 @@
 	<title>Super ChangeLog</title>
 	<link href="css/scl.css" media="screen" rel="stylesheet" type="text/css">
 	<script src="js/jquery-2.0.3.min.js" type="text/javascript"></script>
+	<script src="js/jquery_extensions.js" type="text/javascript"></script>
 	<script src="js/scl.js" type="text/javascript"></script>
 	<script src="js/scl_handlers.js" type="text/javascript"></script>
 </head>
@@ -59,9 +60,9 @@
 
 	<div class="page" id="admin-page">
 		<h2>Deactivate products</h2>
-		<form method="POST" action="scl.php">
+		<form method="POST" action="scl.php" novalidate="novalidate">
 			<div class="products" data-choice="multiple" data-page="admin"></div>
-			<input type="submit" value="Submit" class="button">
+			<input type="submit" name="deactivate" value="Submit" class="button">
 			<span class="clear"></span>
 		</form>
 

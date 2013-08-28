@@ -13,7 +13,7 @@ $(document).ready(function()
 			$(this).siblings('span').text('Feature');
 	});
 
-	$('form:has(.products)').on('submit', function()
+	$('form:has(.products)').not(':novalidate').on('submit', function()
 	{
 		if ($(this).find('input:checked').length == 0) {
 			$(this).find('.products').addClass('error');

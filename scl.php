@@ -22,6 +22,9 @@ $add_release_query = "INSERT INTO releases (id, product_id, version, date)
 $add_product_query = "INSERT INTO products (id, name, active)
 		      VALUES (NULL, ?, 1)";
 
+$deactivate_product_query1 = "UPDATE products SET active = 1";
+$deactivate_product_query2 = "UPDATE products SET active = 0 WHERE id = ?";
+
 if (isset($_GET['product_list'])) {
 	$products = array();
 
@@ -47,12 +50,24 @@ if (isset($_POST['release']) && isset($_POST['new_version'])) {
 	header('Location: ' . $_SERVER['HTTP_REFERER'] . '#release');
 }
 
-if (isset($_POST['new_product']))
-{
+if (isset($_POST['new_product'])) {
 	$statement = $mysql->prepare($add_product_query);
 	$statement->bind_param('s', $_POST['new_product']);
 	$statement->execute();
 	$statement->close();
+
+	header('Location: ' . $_SERVER['HTTP_REFERER'] . '#admin');
+}
+
+if (isset($_POST['deactivate'])) {
+	$mysql->query($deactivate_product_query1);
+
+	$statement = $mysql->prepare($deactivate_product_query2);
+	$statement->bind_param('i', $product);
+
+	foreach ($_POST['admin'] as $product) {
+		$statement->execute();
+	}
 
 	header('Location: ' . $_SERVER['HTTP_REFERER'] . '#admin');
 }
