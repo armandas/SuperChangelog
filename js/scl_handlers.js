@@ -11,7 +11,7 @@ $('input[name=is_bug_fix]').on('change', function()
 		$(this).siblings('span').text('Feature');
 });
 
-$('form').on('submit', function()
+$('form:has(.products)').on('submit', function()
 {
 	if ($(this).find('input:checked').length == 0) {
 		$(this).find('.products').addClass('error');

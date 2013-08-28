@@ -1,12 +1,17 @@
 var SCL_GET_PRODUCTS_URL = 'scl.php?product_list';
 var SCL_GET_CHANGELOG_URL = 'log.txt';//'scl.php;
+var SCL_DEFAULT_PAGE = '#log';
+var SCL_PAGE_LIST = ['#log', '#download', '#release', '#admin']
 
-var scl_default_page = '#log';
 var scl_products;
 
 function displayPage(id)
 {
-	target = id || window.location.hash || scl_default_page;
+	target = id || window.location.hash || SCL_DEFAULT_PAGE;
+
+	if ($.inArray(target, SCL_PAGE_LIST) < 0)
+		target = SCL_DEFAULT_PAGE;
+
 	window.location.hash = target;
 
 	$('.page').hide();
