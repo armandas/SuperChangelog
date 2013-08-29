@@ -11,7 +11,8 @@ h2 {
 	margin: 16px 4px 4px 4px;
 	padding: 3px 0px;
 	font-size: 1em;
-	color: #555;
+	color: #4f4b3f;
+	float: left;
 }
 
 hr {
@@ -40,6 +41,11 @@ textarea {
 textarea {
 	resize: none;
 	height: 50px;
+}
+
+input[type=text]:focus,
+textarea:focus {
+	border-color: #b9b9b9;
 }
 
 input[type=submit] {
@@ -76,13 +82,13 @@ span.clear {
 	margin-right: 30px;
 	margin-bottom: 0px;
 	padding: 5px;
-	color: #777;
+	color: #4f4b3f;
 	outline: none;
 }
 
 #menu a:target,
 #menu a:hover {
-	color: #000;
+	color: #e12b55;
 }
 
 #menu {
@@ -92,7 +98,7 @@ span.clear {
 }
 
 .page {
-	border: 1px solid #bbb;
+	border: 1px solid #aaa;
 	border-radius: 10px;
 	width: 800px;
 	position: absolute;
@@ -102,6 +108,16 @@ span.clear {
 	padding: 10px;
 	background-color: #f7f7f7;
 	background-image: url('../res/bg2.jpg');
+}
+
+.status {
+	margin: 4px 0px;
+	width: 100px;
+	padding: 5px 0px;
+	float: right;
+	text-align: center;
+	color: #d0d0d0;
+	display: none;
 }
 
 .products {
@@ -129,9 +145,14 @@ label.cb-button input + span {
 	float: left;
 }
 
+label.cb-button input + span:hover {
+	border-color: #b9b9b9;
+}
+
 label.cb-button input:checked + span {
-	background-color: #a12;
+	background-color: #e12b55;
 	color: #fff;
+	border-color: #dfdfdf;
 }
 
 #log-text {
@@ -149,7 +170,7 @@ label.cb-button input:checked + span {
 }
 
 .error {
-	border-color: red;
+	border-color: #e12b55;
 	box-shadow: 0 0 3px red;
 }
 
@@ -172,8 +193,7 @@ label.cb-button input:checked + span {
 }
 
 #footer a:hover {
-	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8),
-		     0px 0px 3px rgba(205, 240, 255, 0.9);
+	color: #e12b55;
 }
 
 ::selection {
