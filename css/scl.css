@@ -86,9 +86,13 @@ span.clear {
 	outline: none;
 }
 
-#menu a:target,
 #menu a:hover {
 	color: #e12b55;
+}
+
+#menu a:target {
+	color: #e12b55;
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7);
 }
 
 #menu {
@@ -150,8 +154,8 @@ label.cb-button input + span:hover {
 }
 
 label.cb-button input:checked + span {
-	background-color: #e12b55;
-	color: #fff;
+	background-color: rgba(225, 43, 85, 0.9);
+	color: #fefefe;
 	border-color: #dfdfdf;
 }
 
