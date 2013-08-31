@@ -1,5 +1,5 @@
 var SCL_GET_PRODUCTS_URL = 'scl.php?product_list';
-var SCL_GET_CHANGELOG_URL = 'log.txt';//'scl.php;
+var SCL_GET_CHANGELOG_URL = 'scl.php';
 var SCL_DEFAULT_PAGE = '#log';
 var SCL_PAGE_LIST = ['#log', '#download', '#release', '#admin']
 

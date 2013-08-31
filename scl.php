@@ -26,6 +26,13 @@ $append_changelog_query = "INSERT INTO changelog (id, change_id, release_id, pro
 			   ORDER BY date DESC
 			   LIMIT 1";
 
+$get_changelog_query = "SELECT c.message, r.version, r.date
+			FROM changelog AS cl
+			INNER JOIN changes AS c ON cl.change_id = c.id
+			INNER JOIN releases AS r on cl.release_id = r.id
+			WHERE cl.product_id = ?
+			ORDER BY c.id DESC";
+
 $add_release_query = "INSERT INTO releases (id, product_id, version, date)
 		      VALUES (NULL, ?, ?, CURDATE())";
 
@@ -51,12 +58,41 @@ if (isset($_GET['product_list'])) {
 	print(json_encode($products));
 }
 
-/*
-if (isset($_POST['log'])) {
-	var_dump($_POST);
-	//header('Location: ' . $_SERVER['HTTP_REFERER'] . '#log');
+if (isset($_POST['download'])) {
+	$statement = $mysql->prepare("SELECT CONCAT(name, ' CHANGELOG') FROM products WHERE id = ?");
+	$statement->bind_param('i', $_POST['download']);
+	$statement->execute();
+	$statement->bind_result($product);
+	$statement->fetch();
+	$statement->close();
+	$output = sprintf("%s\n%s\n", $product, str_repeat("=", strlen($product)));
+
+	$old_date = '';
+	$statement = $mysql->prepare($get_changelog_query);
+	$statement->bind_param('i', $_POST['download']);
+	$statement->execute();
+	$res = $statement->get_result();
+
+	while ($row = $res->fetch_assoc()) {
+		if ($row['date'] != $old_date) {
+			$output .= sprintf("\n%s Release %s\n\n", $row['date'], $row['version']);
+			$old_date = $row['date'];
+		}
+
+		$output .= sprintf("\t* %s\n", $row['message']);
+	}
+	$output .= sprintf("\n");
+
+	if (isset($_GET['view'])) {
+		print($output);
+	}
+	else {
+		header("Content-type: text/plain");
+		header('Content-Disposition: attachment; filename="' . $product . '.txt"');
+		header("Content-length: " . strlen($output));
+		print($output);
+	}
 }
-*/
 
 if (isset($_POST['log']) && isset($_POST['change'])) {
 	$statement = $mysql->prepare($add_change_query);
