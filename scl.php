@@ -2,7 +2,13 @@
 
 error_reporting(E_ALL);
 
-require_once('include/db.php');
+require 'include/db.php';
+require "include/raintpl/rain.tpl.class.php";
+include "tpl/template_functions.php";
+
+raintpl::configure('tpl_ext', 'tpl');
+
+$tpl = new raintpl();
 
 $mysql = new mysqli($db_host, $db_user, $db_pass, $db_database);
 
@@ -58,8 +64,38 @@ if (isset($_GET['product_list'])) {
 	print(json_encode($products));
 }
 
-if (isset($_POST['download'])) {
-	$statement = $mysql->prepare("SELECT CONCAT(name, ' CHANGELOG') FROM products WHERE id = ?");
+if (isset($_GET['view'])) {//isset($_POST['download'])) {
+
+	$tpl->assign('product', 'SuperChangelog');
+
+	$r = array(
+		array(
+			'date' => '2013-05-13',
+			'version' => '26.0',
+			'changes' => array(
+				"Change 1", "Change 2", "Change 3"
+			)
+		),
+		array(
+			'date' => '2013-08-16',
+			'version' => '1.4.2',
+			'changes' => array(
+				"Change 4", "Change 5", "Change 6"
+			)
+		),
+		array(
+			'date' => '2013-07-19',
+			'version' => '1.3',
+			'changes' => array(
+			)
+		)
+	);
+
+	$tpl->assign('releases', $r);
+
+	$tpl->draw('changelog');
+
+	/*$statement = $mysql->prepare("SELECT CONCAT(name, ' CHANGELOG') FROM products WHERE id = ?");
 	$statement->bind_param('i', $_POST['download']);
 	$statement->execute();
 	$statement->bind_result($product);
@@ -91,7 +127,7 @@ if (isset($_POST['download'])) {
 		header('Content-Disposition: attachment; filename="' . $product . '.txt"');
 		header("Content-length: " . strlen($output));
 		print($output);
-	}
+	}*/
 }
 
 if (isset($_POST['log']) && isset($_POST['change'])) {
