@@ -19,8 +19,12 @@ $product_list_query = "SELECT p.name, p.id, p.active, r.version
 $add_change_query = "INSERT INTO changes (id, message, is_bug)
 		      VALUES (NULL, ?, ?)";
 
-$append_changelog_query = "INSERT INTO changelog (id, product_id, change_id, release_id)
-			   VALUES (NULL, ?, ?, ?)";
+$append_changelog_query = "INSERT INTO changelog (id, change_id, release_id, product_id)
+			   SELECT NULL, ?, id, ?
+			   FROM releases
+			   WHERE product_id = ?
+			   ORDER BY date DESC
+			   LIMIT 1";
 
 $add_release_query = "INSERT INTO releases (id, product_id, version, date)
 		      VALUES (NULL, ?, ?, CURDATE())";
@@ -47,32 +51,29 @@ if (isset($_GET['product_list'])) {
 	print(json_encode($products));
 }
 
+/*
 if (isset($_POST['log'])) {
 	var_dump($_POST);
 	//header('Location: ' . $_SERVER['HTTP_REFERER'] . '#log');
 }
+*/
 
 if (isset($_POST['log']) && isset($_POST['change'])) {
-	/* Insert into `changes` and keep change id.
-	 * Get the latest release id's using product_list_query.
-	 * Insert count($_POST['log']) rows into changelog to map the change to every affected product.
-	 *
-	 */
-
 	$statement = $mysql->prepare($add_change_query);
 	$statement->bind_param('si', $_POST['change'], $_POST['is_bug_fix']);
 	$statement->execute();
+	$change_id = $mysql->insert_id;
 
 	$statement = $mysql->prepare($append_changelog_query);
-	$statement->bind_param('iii', $_POST['log'][$i], $change_id, $release_id);
+	$statement->bind_param('iii', $change_id, $product, $product);
 
-	for ($i = 0; $i < count($_POST['log']); $i++) {
+	foreach ($_POST['log'] as $product) {
 		$statement->execute();
 	}
 
 	$statement->close();
 
-	header('Location: ' . $_SERVER['HTTP_REFERER'] . '#release');
+	header('Location: ' . $_SERVER['HTTP_REFERER'] . '#log');
 }
 
 if (isset($_POST['release']) && isset($_POST['new_version'])) {
