@@ -2,7 +2,8 @@
 
 error_reporting(E_ALL);
 
-require 'include/db.php';
+require "include/db.php";
+require "include/queries.php";
 require "include/raintpl/rain.tpl.class.php";
 include "tpl/template_functions.php";
 
@@ -16,42 +17,12 @@ if ($mysql->connect_errno) {
 	print("Failed to connect to MySQL: " . $mysql->connect_error);
 }
 
-$product_list_query = "SELECT p.name, p.id, p.active, r.version
-		       FROM products AS p
-		       LEFT JOIN releases as r ON p.id = r.product_id
-		       LEFT JOIN releases AS r2 ON (r.product_id = r2.product_id AND r2.date > r.date)
-		       WHERE r2.date IS NULL";
 
-$add_change_query = "INSERT INTO changes (id, message, is_bug)
-		      VALUES (NULL, ?, ?)";
-
-$append_changelog_query = "INSERT INTO changelog (id, change_id, release_id, product_id)
-			   SELECT NULL, ?, id, ?
-			   FROM releases
-			   WHERE product_id = ?
-			   ORDER BY date DESC
-			   LIMIT 1";
-
-$get_changelog_query = "SELECT c.message, r.version, r.date
-			FROM changelog AS cl
-			INNER JOIN changes AS c ON cl.change_id = c.id
-			INNER JOIN releases AS r on cl.release_id = r.id
-			WHERE cl.product_id = ?
-			ORDER BY c.id DESC";
-
-$add_release_query = "INSERT INTO releases (id, product_id, version, date)
-		      VALUES (NULL, ?, ?, CURDATE())";
-
-$add_product_query = "INSERT INTO products (id, name, active)
-		      VALUES (NULL, ?, 1)";
-
-$deactivate_product_query1 = "UPDATE products SET active = 1";
-$deactivate_product_query2 = "UPDATE products SET active = 0 WHERE id = ?";
 
 if (isset($_GET['product_list'])) {
 	$products = array();
 
-	$res = $mysql->query($product_list_query);
+	$res = $mysql->query(SQL_PRODUCT_LIST);
 	while ($row = $res->fetch_assoc()) {
 		$products[] = array(
 			"id" => $row['id'],
@@ -95,7 +66,7 @@ if (isset($_GET['view'])) {//isset($_POST['download'])) {
 
 	$tpl->draw('changelog');
 
-	/*$statement = $mysql->prepare("SELECT CONCAT(name, ' CHANGELOG') FROM products WHERE id = ?");
+	/*$statement = $mysql->prepare(SQL_GET_PRODUCT_NAME);
 	$statement->bind_param('i', $_POST['download']);
 	$statement->execute();
 	$statement->bind_result($product);
@@ -104,7 +75,7 @@ if (isset($_GET['view'])) {//isset($_POST['download'])) {
 	$output = sprintf("%s\n%s\n", $product, str_repeat("=", strlen($product)));
 
 	$old_date = '';
-	$statement = $mysql->prepare($get_changelog_query);
+	$statement = $mysql->prepare(SQL_GET_CHANGELOG);
 	$statement->bind_param('i', $_POST['download']);
 	$statement->execute();
 	$res = $statement->get_result();
@@ -131,12 +102,12 @@ if (isset($_GET['view'])) {//isset($_POST['download'])) {
 }
 
 if (isset($_POST['log']) && isset($_POST['change'])) {
-	$statement = $mysql->prepare($add_change_query);
+	$statement = $mysql->prepare(SQL_ADD_CHANGE);
 	$statement->bind_param('si', $_POST['change'], $_POST['is_bug_fix']);
 	$statement->execute();
 	$change_id = $mysql->insert_id;
 
-	$statement = $mysql->prepare($append_changelog_query);
+	$statement = $mysql->prepare(SQL_APPEND_CHANGELOG);
 	$statement->bind_param('iii', $change_id, $product, $product);
 
 	foreach ($_POST['log'] as $product) {
@@ -149,7 +120,7 @@ if (isset($_POST['log']) && isset($_POST['change'])) {
 }
 
 if (isset($_POST['release']) && isset($_POST['new_version'])) {
-	$statement = $mysql->prepare($add_release_query);
+	$statement = $mysql->prepare(SQL_ADD_RELEASE);
 	$statement->bind_param('is', $_POST['release'], $_POST['new_version']);
 	$statement->execute();
 	$statement->close();
@@ -158,7 +129,7 @@ if (isset($_POST['release']) && isset($_POST['new_version'])) {
 }
 
 if (isset($_POST['new_product'])) {
-	$statement = $mysql->prepare($add_product_query);
+	$statement = $mysql->prepare(SQL_ADD_PRODUCT);
 	$statement->bind_param('s', $_POST['new_product']);
 	$statement->execute();
 	$statement->close();
@@ -167,9 +138,9 @@ if (isset($_POST['new_product'])) {
 }
 
 if (isset($_POST['deactivate'])) {
-	$mysql->query($deactivate_product_query1);
+	$mysql->query(SQL_ACTIVATE_ALL_PRODUCTS);
 
-	$statement = $mysql->prepare($deactivate_product_query2);
+	$statement = $mysql->prepare(SQL_DEACTIVATE_PRODUCT);
 	$statement->bind_param('i', $product);
 
 	foreach ($_POST['admin'] as $product) {
