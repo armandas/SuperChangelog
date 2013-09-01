@@ -61,9 +61,14 @@ function product_createMenu()
 			'value': scl_products[i].id,
 			'checked': (scl_products[i].active == '0')
 		});
-		var span = $('<span></span>', {'text': scl_products[i].name});
+		var product_span = $('<span></span>', {'text': scl_products[i].name});
+		var release_span = $('<span></span>', {
+			'text': scl_products[i].release,
+			'class': 'cb-release'
+		});
 
-		label.append(input, span);
+		product_span.append(release_span);
+		label.append(input, product_span);
 		$(this).append(label);
 	}
 
