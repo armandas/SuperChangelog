@@ -18,13 +18,32 @@ function displayPage(id)
 	$(target + '-page').show();
 }
 
-function createProductMenu()
+function product_isValid(product, page)
+{
+	switch (page) {
+	/* All products are valid for admin page */
+	case 'admin':
+		return true;
+
+	/* Cannot add change to non-existing release */
+	case 'log':
+		if (product.release == null)
+			return false;
+
+	/* Hide inactive products from all pages (except admin). */
+	default:
+		if (product.active == '0')
+			return false;
+	}
+
+	return true;
+}
+
+function product_createMenu()
 {
 	for (var i in scl_products) {
-		if (scl_products[i].active == '0') {
-			if ($(this).attr('data-page') != 'admin')
-				continue;
-		}
+		if (!product_isValid(scl_products[i], $(this).attr('data-page')))
+			continue;
 
 		if ($(this).attr('data-choice') == 'multiple') {
 			var input_type = 'checkbox';
@@ -52,15 +71,15 @@ function createProductMenu()
 	$(this).append(span_clear);
 }
 
-function processProductList(data)
+function product_processList(data)
 {
 	scl_products = data;
-	$('.products').each(createProductMenu);
+	$('.products').each(product_createMenu);
 }
 
 $(document).ready(function()
 {
-	$.getJSON(SCL_GET_PRODUCTS_URL, processProductList);
+	$.getJSON(SCL_GET_PRODUCTS_URL, product_processList);
 	displayPage();
 });
 
