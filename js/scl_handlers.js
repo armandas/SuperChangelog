@@ -28,7 +28,21 @@ $(document).ready(function()
 
 	$('.products').on('change', 'input[name=download]', function()
 	{
-		$('#log-text').load(SCL_GET_CHANGELOG_URL + '?view=' + $(this).val());
+		$.ajax({
+			url: SCL_BACKEND_URL,
+			type: 'post',
+			dataType: 'text',
+			data: {
+				'download': $(this).val(),
+				'view': 1
+			},
+			success: function(data) {
+				$('#log-text').text(data);
+			},
+			error: function(xhr, statusMsg, errorMsg) {
+				$('#log-text').text('AJAX Error.');
+			}
+		});
 	});
 
 	$('.products').on('change', 'input[name=release]', function()

@@ -1,5 +1,5 @@
-var SCL_GET_PRODUCTS_URL = 'scl.php?product_list';
-var SCL_GET_CHANGELOG_URL = 'scl.php';
+var SCL_BACKEND_URL = 'scl.php';
+var SCL_GET_PRODUCTS_URL = SCL_BACKEND_URL + '?product_list';
 var SCL_DEFAULT_PAGE = '#log';
 var SCL_PAGE_LIST = ['#log', '#download', '#release', '#admin']
 
@@ -82,4 +82,3 @@ $(document).ready(function()
 	$.getJSON(SCL_GET_PRODUCTS_URL, product_processList);
 	displayPage();
 });
-
