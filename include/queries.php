@@ -2,7 +2,7 @@
 
 define("SQL_PRODUCT_LIST",		"SELECT p.name, p.id, p.active, r.version
 					 FROM products AS p
-					 LEFT JOIN releases as r ON p.id = r.product_id
+					 LEFT JOIN releases AS r ON p.id = r.product_id
 					 LEFT JOIN releases AS r2 ON (r.product_id = r2.product_id AND r2.date > r.date)
 					 WHERE r2.date IS NULL");
 

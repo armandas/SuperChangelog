@@ -35,70 +35,45 @@ if (isset($_GET['product_list'])) {
 	print(json_encode($products));
 }
 
-if (isset($_GET['view'])) {//isset($_POST['download'])) {
+if (isset($_POST['download'])) {
+	$releases = array();
 
-	$tpl->assign('product', 'SuperChangelog');
-
-	$r = array(
-		array(
-			'date' => '2013-05-13',
-			'version' => '26.0',
-			'changes' => array(
-				"Change 1", "Change 2", "Change 3"
-			)
-		),
-		array(
-			'date' => '2013-08-16',
-			'version' => '1.4.2',
-			'changes' => array(
-				"Change 4", "Change 5", "Change 6"
-			)
-		),
-		array(
-			'date' => '2013-07-19',
-			'version' => '1.3',
-			'changes' => array(
-			)
-		)
-	);
-
-	$tpl->assign('releases', $r);
-
-	$tpl->draw('changelog');
-
-	/*$statement = $mysql->prepare(SQL_GET_PRODUCT_NAME);
+	$statement = $mysql->prepare(SQL_GET_PRODUCT_NAME);
 	$statement->bind_param('i', $_POST['download']);
 	$statement->execute();
 	$statement->bind_result($product);
 	$statement->fetch();
 	$statement->close();
-	$output = sprintf("%s\n%s\n", $product, str_repeat("=", strlen($product)));
 
-	$old_date = '';
 	$statement = $mysql->prepare(SQL_GET_CHANGELOG);
 	$statement->bind_param('i', $_POST['download']);
 	$statement->execute();
 	$res = $statement->get_result();
 
 	while ($row = $res->fetch_assoc()) {
-		if ($row['date'] != $old_date) {
-			$output .= sprintf("\n%s Release %s\n\n", $row['date'], $row['version']);
-			$old_date = $row['date'];
+		if (array_key_exists($row['version'], $releases)) {
+			array_push($releases[$row['version']]['changes'], $row['message']);
 		}
-
-		$output .= sprintf("\t* %s\n", $row['message']);
+		else {
+			$tmp = $releases[$row['version']] = array(
+				'date' => $row['date'],
+				'changes' => array($row['message'])
+			);
+		}
 	}
-	$output .= sprintf("\n");
 
-	if (isset($_GET['view'])) {
+	$tpl->assign('product', $product);
+	$tpl->assign('releases', $releases);
+	$output = $tpl->draw('changelog', $return_string = true);
+
+	if (isset($_POST['view'])) {
 		print($output);
 	}
 	else {
 		header("Content-type: text/plain");
-		header('Content-Disposition: attachment; filename="' . $product . '.txt"');
-		header("Content-length: " . strlen($output));
+		header('Content-disposition: attachment; filename="' . $product . '_CHANGELOG.txt"');
 		print($output);
-	}*/
+	}
 }
 
 if (isset($_POST['log']) && isset($_POST['change'])) {
