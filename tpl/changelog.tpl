@@ -3,7 +3,7 @@
 {loop="releases"}
 {$value.date} Release {$key}
 	{loop="value.changes"}
-	* {$value}{else}
+	* {$value.message}{else}
 	No changes have been made in version {$key1}.
 	{/loop}
 {else}

@@ -49,16 +49,22 @@ if (isset($_POST['download'])) {
 	$statement = $mysql->prepare(SQL_GET_CHANGELOG);
 	$statement->bind_param('i', $_POST['download']);
 	$statement->execute();
-	$statement->bind_result($message, $version, $date);
+	$statement->bind_result($change_date, $message, $is_bug, $version, $release_date);
 
 	while ($statement->fetch()) {
+		$change = array(
+			'date' => $change_date,
+			'message' => $message,
+			'is_bug' => $is_bug
+		);
+
 		if (array_key_exists($version, $releases)) {
-			array_push($releases[$version]['changes'], $message);
+			$releases[$version]['changes'][] = $change;
 		}
 		else {
 			$tmp = $releases[$version] = array(
-				'date' => $date,
-				'changes' => array($message)
+				'date' => $release_date,
+				'changes' => array($change)
 			);
 		}
 	}
