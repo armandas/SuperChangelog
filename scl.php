@@ -1,5 +1,6 @@
 <?php
 
+ini_set('display_errors','On');
 error_reporting(E_ALL);
 
 require "include/db.php";
@@ -48,16 +49,16 @@ if (isset($_POST['download'])) {
 	$statement = $mysql->prepare(SQL_GET_CHANGELOG);
 	$statement->bind_param('i', $_POST['download']);
 	$statement->execute();
-	$res = $statement->get_result();
+	$statement->bind_result($message, $version, $date);
 
-	while ($row = $res->fetch_assoc()) {
-		if (array_key_exists($row['version'], $releases)) {
-			array_push($releases[$row['version']]['changes'], $row['message']);
+	while ($statement->fetch()) {
+		if (array_key_exists($version, $releases)) {
+			array_push($releases[$version]['changes'], $message);
 		}
 		else {
-			$tmp = $releases[$row['version']] = array(
-				'date' => $row['date'],
-				'changes' => array($row['message'])
+			$tmp = $releases[$version] = array(
+				'date' => $date,
+				'changes' => array($message)
 			);
 		}
 	}
