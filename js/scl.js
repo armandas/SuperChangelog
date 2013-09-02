@@ -25,11 +25,6 @@ function product_isValid(product, page)
 	case 'admin':
 		return true;
 
-	/* Cannot add change to non-existing release */
-	case 'log':
-		if (product.release == null)
-			return false;
-
 	/* Hide inactive products from all pages (except admin). */
 	default:
 		if (product.active == '0')

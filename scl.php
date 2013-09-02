@@ -81,10 +81,11 @@ if (isset($_POST['log']) && isset($_POST['change'])) {
 	$statement = $mysql->prepare(SQL_ADD_CHANGE);
 	$statement->bind_param('si', $_POST['change'], $_POST['is_bug_fix']);
 	$statement->execute();
+	$statement->close();
 	$change_id = $mysql->insert_id;
 
 	$statement = $mysql->prepare(SQL_APPEND_CHANGELOG);
-	$statement->bind_param('iii', $change_id, $product, $product);
+	$statement->bind_param('ii', $change_id, $product);
 
 	foreach ($_POST['log'] as $product) {
 		$statement->execute();
@@ -98,6 +99,12 @@ if (isset($_POST['log']) && isset($_POST['change'])) {
 if (isset($_POST['release']) && isset($_POST['new_version'])) {
 	$statement = $mysql->prepare(SQL_ADD_RELEASE);
 	$statement->bind_param('is', $_POST['release'], $_POST['new_version']);
+	$statement->execute();
+	$statement->close();
+	$release_id = $mysql->insert_id;
+
+	$statement = $mysql->prepare(SQL_UPDATE_RELEASE_IDS);
+	$statement->bind_param('ii', $release_id, $_POST['release']);
 	$statement->execute();
 	$statement->close();
 

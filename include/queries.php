@@ -10,23 +10,22 @@ define("SQL_ADD_CHANGE", 		"INSERT INTO changes (id, message, is_bug)
 					 VALUES (NULL, ?, ?)");
 
 define("SQL_APPEND_CHANGELOG",		"INSERT INTO changelog (id, change_id, release_id, product_id)
-					 SELECT NULL, ?, id, ?
-					 FROM releases
-					 WHERE product_id = ?
-					 ORDER BY date DESC
-					 LIMIT 1");
+					 VALUES (NULL, ?, NULL, ?)");
 
 define("SQL_GET_PRODUCT_NAME",		"SELECT name FROM products WHERE id = ?");
 
 define("SQL_GET_CHANGELOG",		"SELECT c.message, r.version, r.date
 					 FROM changelog AS cl
 					 INNER JOIN changes AS c ON cl.change_id = c.id
-					 INNER JOIN releases AS r on cl.release_id = r.id
+					 LEFT JOIN releases AS r on cl.release_id = r.id
 					 WHERE cl.product_id = ?
 					 ORDER BY c.id DESC");
 
 define("SQL_ADD_RELEASE", 		"INSERT INTO releases (id, product_id, version, date)
 			   		 VALUES (NULL, ?, ?, CURDATE())");
+
+define("SQL_UPDATE_RELEASE_IDS",	"UPDATE changelog SET release_id = ?
+					 WHERE release_id IS NULL AND product_id = ?");
 
 define("SQL_ADD_PRODUCT", 		"INSERT INTO products (id, name, active)
 					 VALUES (NULL, ?, 1)");
