@@ -5,14 +5,6 @@ $(document).ready(function()
 		displayPage(this.hash);
 	});
 
-	$('input[name=is_bug_fix]').on('change', function()
-	{
-		if ($(this).is(':checked'))
-			$(this).siblings('span').text('Bug Fix');
-		else
-			$(this).siblings('span').text('Feature');
-	});
-
 	$('form:has(.products)').not(':novalidate').on('submit', function()
 	{
 		if ($(this).find('input:checked').length == 0) {
