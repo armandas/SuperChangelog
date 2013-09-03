@@ -1,7 +1,7 @@
 var SCL_BACKEND_URL = 'scl.php';
 var SCL_GET_PRODUCTS_URL = SCL_BACKEND_URL + '?product_list';
-var SCL_DEFAULT_PAGE = '#log';
-var SCL_PAGE_LIST = ['#log', '#download', '#release', '#admin']
+var SCL_DEFAULT_PAGE = '#download';
+var SCL_PAGE_LIST = ['#download', '#log', '#release', '#admin'];
 
 var scl_products;
 

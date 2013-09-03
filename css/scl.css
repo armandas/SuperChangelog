@@ -8,7 +8,7 @@ body {
 }
 
 h2 {
-	margin: 16px 4px 4px 4px;
+	margin: 4px;
 	padding: 3px 0px;
 	font-size: 1em;
 	color: #4f4b3f;
@@ -105,11 +105,9 @@ span.clear {
 	border: 1px solid #aaa;
 	border-radius: 10px;
 	width: 800px;
-	position: absolute;
-	left: 0px;
-	right: 0px;
 	margin: auto;
-	padding: 10px;
+	margin-bottom: 20px;
+	padding: 20px 10px;
 	background-color: #f7f7f7;
 	background-image: url('../res/bg2.jpg');
 }

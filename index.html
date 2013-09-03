@@ -14,8 +14,8 @@
 
 <body>
 	<div id="menu">
-		<a href="#log" id="log">Add a change</a>
 		<a href="#download" id="download">Download a changelog</a>
+		<a href="#log" id="log">Add a change</a>
 		<a href="#release" id="release">Add a release</a>
 	</div>
 
@@ -39,11 +39,14 @@
 		<h2>Choose a product</h2>
 		<form method="POST" action="scl.php">
 			<div class="products" data-choice="single" data-page="download"></div>
-
-			<h2>Change log</h2>
-			<pre id="log-text">Please select a product.</pre>
 			<input type="submit" value="Download" class="button">
+			<span class="clear"></span>
 		</form>
+
+		<hr>
+
+		<h2>Change log</h2>
+		<pre id="log-text">Please select a product.</pre>
 		<span class="clear"></span>
 	</div>
 
