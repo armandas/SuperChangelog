@@ -106,7 +106,6 @@ span.clear {
 	border-radius: 10px;
 	width: 800px;
 	margin: auto;
-	margin-bottom: 20px;
 	padding: 20px 10px;
 	background-color: #f7f7f7;
 	background-image: url('../res/bg2.jpg');
@@ -180,15 +179,13 @@ label.cb-button input:checked + span {
 
 #footer {
 	color: rgba(0, 0, 0, 0.3);
-	position: absolute;
-	right: 20px;
-	bottom: 15px;
-	text-align: right;
+	text-align: center;
 	font-size: 0.9em;
 	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
 	text-decoration: none;
-	z-index: -1;
 	cursor: default;
+	margin: 15px auto;
+	width: 800px;
 }
 
 #footer a {
