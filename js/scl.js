@@ -36,6 +36,10 @@ function product_isValid(product, page)
 
 function product_createMenu()
 {
+	if (scl_products.length == 0) {
+		$(this).text('No products have been added yet.');
+	}
+
 	for (var i in scl_products) {
 		if (!product_isValid(scl_products[i], $(this).attr('data-page')))
 			continue;
