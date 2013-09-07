@@ -13,6 +13,7 @@ h2 {
 	font-size: 1em;
 	color: #4f4b3f;
 	float: left;
+	cursor: default;
 }
 
 hr {
