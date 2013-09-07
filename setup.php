@@ -77,7 +77,7 @@ define("OUTPUT_FOOTER",		'</body>
 define("OUTPUT_SUCCESS",	'<div class="page">
 					<h2>Congratulations!</h2>
 					<div class="products">SuperChangelog has been set up correctly.
-					<a href="index.html">Check it out!</a></div>
+					<a href="./">Check it out!</a></div>
 				 </div>');
 
 define("OUTPUT_FAIL",		'<div class="page">
