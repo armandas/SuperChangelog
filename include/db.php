@@ -1,8 +1,8 @@
 <?php
 
-$db_host = "localhost";
-$db_user = "root";
-$db_pass = "";
-$db_database = "super_changelog";
+define('DB_HOST',	'localhost');
+define('DB_USER',	'');
+define('DB_PASS',	'');
+define('DB_DATABASE',	'super_changelog');
 
 ?>

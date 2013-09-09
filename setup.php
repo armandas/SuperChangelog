@@ -6,7 +6,7 @@ require "include/db.php";
 
 define("SCL_SETUP_VERSION",	'1');
 define("SCL_SETUP_SIG",		'tmp/SCL_INSTALLED');
-define("SCL_SETUP_HASH", 	md5($db_host . $db_user . $db_database . SCL_SETUP_VERSION));
+define("SCL_SETUP_HASH", 	md5(DB_HOST . DB_USER . DB_DATABASE . SCL_SETUP_VERSION));
 
 $functions = array(
 	"json_encode",
@@ -183,7 +183,7 @@ if (SCL_SETUP_HASH === $setup_hash) {
 /* Check database settings.                                                  */
 /*****************************************************************************/
 $title = "Database connection";
-$mysql = new mysqli($db_host, $db_user, $db_pass, $db_database);
+$mysql = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
 if ($mysql->connect_errno) {
 	$message = MESSAGE_DB_CONN;
 	$message .= '<em class="err">[ Failed to connect to MySQL: ' . $mysql->connect_error . ' ]</em>';

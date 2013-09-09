@@ -12,7 +12,7 @@ raintpl::configure('tpl_ext', 'tpl');
 
 $tpl = new raintpl();
 
-$mysql = new mysqli($db_host, $db_user, $db_pass, $db_database);
+$mysql = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
 
 if ($mysql->connect_errno) {
 	print("Failed to connect to MySQL: " . $mysql->connect_error);
