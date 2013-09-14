@@ -52,7 +52,7 @@ textarea {
 
 input[type=text]:focus,
 textarea:focus {
-	border-color: #b9b9b9;
+	border-color: rgba(0, 0, 0, 0.25);
 }
 
 input[type=submit] {
