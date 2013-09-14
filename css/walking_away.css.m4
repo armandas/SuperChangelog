@@ -1,10 +1,27 @@
+/* Colour palette from: http://www.colourlovers.com/palette/623761/Walking_Away */
+dnl
+define(`KEY_R', `185')dnl
+define(`KEY_G', `5')dnl
+define(`KEY_B', `4')dnl
+dnl
+define(`BGD_R', `232')dnl
+define(`BGD_G', `232')dnl
+define(`BGD_B', `232')dnl
+dnl
+define(`BGL_R', `246')dnl
+define(`BGL_G', `246')dnl
+define(`BGL_B', `246')dnl
+dnl
+define(`MENU_R', `51')dnl
+define(`MENU_G', `51')dnl
+define(`MENU_B', `51')dnl
 
 body {
 	margin: 0px;
 	padding: 0px;
 	font-size: 16px;
 	font-family: sans-serif;
-	background-color: rgba(208, 208, 208, 0.7);
+	background-color: rgba(BGD_R, BGD_G, BGD_B, 0.7);
 	background-image: url('../res/bg.png');
 }
 
@@ -48,7 +65,7 @@ textarea {
 
 input[type=text]:focus,
 textarea:focus {
-	border-color: rgba(0, 0, 0, 0.25);
+	border-color: #b9b9b9;
 }
 
 input[type=submit] {
@@ -85,16 +102,16 @@ span.clear {
 	margin-right: 30px;
 	margin-bottom: 0px;
 	padding: 5px;
-	color: #4f4b3f;
+	color: rgba(MENU_R, MENU_G, MENU_B, 1);
 	outline: none;
 }
 
 #menu a:hover {
-	color: rgba(225, 43, 85, 1);
+	color: rgba(KEY_R, KEY_G, KEY_B, 1);
 }
 
 #menu a:target {
-	color: rgba(225, 43, 85, 1);
+	color: rgba(KEY_R, KEY_G, KEY_B, 1);
 	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7);
 }
 
@@ -110,7 +127,7 @@ span.clear {
 	width: 800px;
 	margin: auto;
 	padding: 20px 10px;
-	background-color: rgba(247, 247, 247, 1);;
+	background-color: rgba(BGL_R, BGL_G, BGL_B, 1);;
 	background-image: url('../res/bg2.png');
 }
 
@@ -145,8 +162,8 @@ label.cb-button input + span:hover {
 }
 
 label.cb-button input:checked + span {
-	border-color: rgba(225, 43, 85, 0.6);
-	box-shadow: 0px 0px 3px rgba(225, 43, 85, 1);
+	border-color: rgba(KEY_R, KEY_G, KEY_B, 0.6);
+	box-shadow: 0px 0px 3px rgba(KEY_R, KEY_G, KEY_B, 1);
 }
 
 .cb-release {
@@ -155,9 +172,9 @@ label.cb-button input:checked + span {
 	font-size: 0.7em;
 	line-height: 25px;
 	vertical-align: middle;
-	border: 1px solid rgba(225, 43, 85, 0.6);
+	border: 1px solid rgba(KEY_R, KEY_G, KEY_B, 0.6);
 	border-radius: 3px;
-	background-color: rgba(225, 43, 85, 0.6);
+	background-color: rgba(KEY_R, KEY_G, KEY_B, 0.6);
 	color: #fff;
 }
 
@@ -197,7 +214,7 @@ label.cb-button input:checked + span {
 }
 
 #footer a:hover {
-	color: rgba(225, 43, 85, 1);
+	color: rgba(KEY_R, KEY_G, KEY_B, 1);
 }
 
 ::selection {
