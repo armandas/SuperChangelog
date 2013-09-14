@@ -1,4 +1,8 @@
 
+
+
+
+
 body {
 	margin: 0px;
 	padding: 0px;
@@ -12,7 +16,7 @@ h2 {
 	margin: 4px;
 	padding: 3px 0px;
 	font-size: 1em;
-	color: #4f4b3f;
+	color: rgba(79, 75, 63, 1);
 	float: left;
 	cursor: default;
 }
@@ -48,7 +52,7 @@ textarea {
 
 input[type=text]:focus,
 textarea:focus {
-	border-color: rgba(0, 0, 0, 0.25);
+	border-color: #b9b9b9;
 }
 
 input[type=submit] {
@@ -85,7 +89,7 @@ span.clear {
 	margin-right: 30px;
 	margin-bottom: 0px;
 	padding: 5px;
-	color: #4f4b3f;
+	color: rgba(79, 75, 63, 1);
 	outline: none;
 }
 
